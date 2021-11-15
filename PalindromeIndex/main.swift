@@ -9,6 +9,11 @@ import Foundation
 
 func palindromeIndex(s: String) -> Int {
     let a = Array(s)
+    var h = a
+    h.reverse()
+    if a == h {
+        return -1
+    }
     for i in 0..<a.count {
         var b = a
         b.remove(at: i)
@@ -19,12 +24,10 @@ func palindromeIndex(s: String) -> Int {
         if r == b {
             print(b)
             return i
-        } else {
-            continue
         }
     }
     return -1
 }
 
-print(palindromeIndex(s: "raa"))
+print(palindromeIndex(s: "azaa"))
 
