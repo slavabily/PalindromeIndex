@@ -8,22 +8,23 @@
 import Foundation
 
 func palindromeIndex(s: String) -> Int {
-    var a = Array(s)
-    for _ in 0..<a.count - 1 {
-        for i in 0..<a.count {
-            // checking if string is already a palindrome
-            if a[i] != a[a.count - 1 - i] {
-                break
-            } else {
-                return -1
-            }
+    let a = Array(s)
+    for i in 0..<a.count {
+        var b = a
+        b.remove(at: i)
+        print(b)
+        var r = b
+        r.reverse()
+        print(r)
+        if r == b {
+            print(b)
+            return i
+        } else {
+            continue
         }
-        let v = a.endIndex
-        print(v - 1)
-        a.removeLast()
     }
-    return 0
+    return -1
 }
 
-print(palindromeIndex(s: "baa"))
+print(palindromeIndex(s: "raa"))
 
