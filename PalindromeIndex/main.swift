@@ -8,22 +8,21 @@
 import Foundation
 
 func palindromeIndex(s: String) -> Int {
-    let a = Array(s)
-    var h = a
-    h.reverse()
-    if a == h {
-        return -1
-    }
-    for i in 0..<a.count {
-        var b = a
-        b.remove(at: i)
-        print(b)
-        var r = b
-        r.reverse()
-        print(r)
-        if r == b {
-            print(b)
-            return i
+    
+    let sArray = s.map { String($0) }
+    let reversedArray = Array(sArray.reversed())
+    
+    guard sArray != reversedArray else { return -1 }
+    let n = s.count
+    let k = n/2
+    
+    for i in 0...k {
+        if sArray[i] != reversedArray[i] {
+            if sArray[i+1...n-1-i] == reversedArray[i...n-2-i] {
+                return i
+            } else if sArray[i...n-i-2] == reversedArray[i+1...n-1-i] {
+                return n-i-1
+            }
         }
     }
     return -1
